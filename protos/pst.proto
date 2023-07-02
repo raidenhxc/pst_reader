@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+message ProtoFolder {
+  int32 id = 1;
+  int32 parentId = 2;
+  string name = 3;
+
+  int32 num_of_subfolders = 4;
+  repeated ProtoFolder subfolders = 5;
+
+  int32 num_of_messages = 6;
+  repeated ProtoMessage messages = 7;
+}
+
+message ProtoMessage {
+  int32 id = 1;
+  string subject = 2;
+  string sender_name = 3;
+  string html_body = 4;
+  string plain_text_body = 5;
+  string transport_headers = 6;
+  int32 delivery_time_timestamp = 8;
+
+  repeated ProtoAttachment attachments = 9;
+}
+
+message ProtoAttachment {
+  int64 size = 1;
+  bytes buffer = 2;
+}
+
